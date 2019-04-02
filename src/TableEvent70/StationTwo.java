@@ -2,7 +2,7 @@ package TableEvent70;
 
 public class StationTwo extends Thread	       // small hole
 {  
-	private ThreadUI70 myOutput=new ThreadUI70("BigDrill Event");
+	private ThreadUI70 myOutput=new ThreadUI70("StationTwo Event");
 	private Event64 evTwo,evThree;
 	private int num;
 	Elem data;
@@ -23,6 +23,8 @@ public class StationTwo extends Thread	       // small hole
 		do
 		{
 			data=(Elem)evTwo.waitEvent();  //sendEvent of main wakes him up
+			if (data.type[1] == -1)
+				myOutput.println("Station Two Closes station");
 			if(data.type[1]==0)
 				myOutput.println("Station Two paints Chair Frame tchelet "+(data.getX()));
 			if(data.type[1]==1)

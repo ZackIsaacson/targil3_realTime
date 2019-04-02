@@ -6,8 +6,8 @@ import java.util.concurrent.ThreadLocalRandom;
 class Elem {
     private int x;
     private String st;
-//    ArrayList<Integer> type = new ArrayList(4);
-    int type[]=new int [4];
+    //    ArrayList<Integer> type = new ArrayList(4);
+    int type[] = new int[4];
 
     public Elem(int x, String st) {
 /*
@@ -16,20 +16,35 @@ class Elem {
 		העמדה השלישית מרכיבה רק סוג אחד של מושב.
 		העמדה הרביעית מרפדת את המושב בעורות תחשים או בעורות אילים מאדמים.
 */
-
+        if (x == 0) {
 //		type = ThreadLocalRandom.current().nextInt(0, 2);
-        type[0]=ThreadLocalRandom.current().nextInt(0, 3);
-        type[1]=ThreadLocalRandom.current().nextInt(0, 3);
-        type[2]=0;
-        type[3]=ThreadLocalRandom.current().nextInt(0, 2);
+            type[0] = -1;
+            type[1] = -1;
+            type[2] = -1;
+            type[3] = -1;
 
 //        type.add();  //firstStation
 //        type.add(ThreadLocalRandom.current().nextInt(0, 3));  //second
 //        type.add(0);  //third
 //        type.add(ThreadLocalRandom.current().nextInt(0, 2));   //fourth
 
-        this.x = x;
-        this.st = st;
+            this.x = x;
+            this.st = st;
+        } else {
+            //		type = ThreadLocalRandom.current().nextInt(0, 2);
+            type[0] = ThreadLocalRandom.current().nextInt(0, 3);
+            type[1] = ThreadLocalRandom.current().nextInt(0, 3);
+            type[2] = 0;
+            type[3] = ThreadLocalRandom.current().nextInt(0, 2);
+
+//        type.add();  //firstStation
+//        type.add(ThreadLocalRandom.current().nextInt(0, 3));  //second
+//        type.add(0);  //third
+//        type.add(ThreadLocalRandom.current().nextInt(0, 2));   //fourth
+
+            this.x = x;
+            this.st = st;
+        }
     }
 
     public String getSt() {

@@ -2,7 +2,7 @@ package TableEvent70;
 
 public class StationThree extends Thread	       // small hole
 {  
-	private ThreadUI70 myOutput=new ThreadUI70("SmallDrill Event");
+	private ThreadUI70 myOutput=new ThreadUI70("StationThree Event");
 	private Event64 evThree,evFour;
 	private int num;
 	Elem data;
@@ -26,6 +26,9 @@ public class StationThree extends Thread	       // small hole
 			data=(Elem)(evThree.waitEvent());
 
 //			if(data.getX()>2 && data.getX()!=(num+3))
+			if (data.type[2] == -1)
+				myOutput.println("Station Three Closes station");
+			else
 				myOutput.println("Station Three adds seat to Chair "+(data.getX()));
 
 			evFour.sendEvent(data);
