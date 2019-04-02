@@ -24,7 +24,7 @@ public class StationOne extends Thread       // push in and push out
 		evTwo = new Event64();   //todo stationTwo waiting for events
 		new StationTwo(num, evTwo);   //todo firstStation sleeping
 
-		do 
+		do
 		{
 			data=(Elem)evOne.waitEvent();  //sendEvent of main wakes him up
 
@@ -40,10 +40,10 @@ public class StationOne extends Thread       // push in and push out
 //			if(data.getX()>0 && data.getX()<=num)
 //				myOutput.println ("Arm Push in the piece "+data.getX());
 //TODO how does one know that two is available to give him event so that he's available to accept from main?
-				evTwo.sendEvent();   //tries to send event. if not able to because inUse=true yields but either way this thread wont move to next line to free and wait for next thread before finsihed
-				evOne.waitEvent();  //todo inUse =false. can get next
+				evTwo.sendEvent(data);   //tries to send event. if not able to because inUse=true yields but either way this thread wont move to next line to free and wait for next thread before finsihed
+//				evOne.waitEvent();  //todo inUse =false. can get next
 //			}
-		} while(data.getX()!=0);  
+		} while(data.getX()!=0);
 
 		myOutput.println("Station One Event finish");
 	}

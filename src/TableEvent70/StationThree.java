@@ -20,15 +20,16 @@ public class StationThree extends Thread	       // small hole
 		myOutput.println("Station Three Event starts");
 		evFour = new Event64();   //todo stationTwo waiting for events
 		new StationFour(num, evFour);
-		do 
-		{                                                    
+		do
+		{
+
 			data=(Elem)(evThree.waitEvent());
 
-			if(data.getX()>2 && data.getX()!=(num+3))
-				myOutput.println("Station Three adds seat to Chair "+(data.getX()-3));
+//			if(data.getX()>2 && data.getX()!=(num+3))
+				myOutput.println("Station Three adds seat to Chair "+(data.getX()));
 
-			evFour.sendEvent();
-		} while(data.getX()!=0);  
+			evFour.sendEvent(data);
+		} while(data.getX()!=0);
 		myOutput.println("Station Three Event finish");
 	}
 }

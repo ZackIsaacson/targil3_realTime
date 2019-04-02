@@ -1,5 +1,7 @@
 package TableEvent70;
 
+import static TableEvent70.UseTableEventWin.finito;
+
 public class StationFour extends Thread	       // small hole
 {
     private ThreadUI70 myOutput=new ThreadUI70("SmallDrill Event");
@@ -19,19 +21,20 @@ public class StationFour extends Thread	       // small hole
     {
         myOutput.println("Station Four Event starts");
         evEnd = new Event64();   //todo stationTwo waiting for events
+        finito(evEnd);
 //        new StationOne(num, evEnd);
-        new UseTableEventWin().finito(num,evEnd); //todo
+//        new UseTableEventWin().finito(num,evEnd); //todo
 
         do
         {
             data=(Elem)(evFour.waitEvent());
 
             if(data.type[1]==0)
-                myOutput.println("Station Four cushions orot tchashim to Chair "+(data.getX()-3));
+                myOutput.println("Station Four cushions orot tchashim to Chair "+(data.getX()));
             if(data.type[1]==1)
-                myOutput.println("Station Four cushions orot eilim modamim to Chair "+(data.getX()-3));
+                myOutput.println("Station Four cushions orot eilim modamim to Chair "+(data.getX()));
 
-            evEnd.sendEvent();
+            evEnd.sendEvent(data);
         } while(data.getX()!=0);
         myOutput.println("Station Four Event finish");
     }
